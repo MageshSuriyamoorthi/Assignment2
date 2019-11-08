@@ -1,0 +1,18 @@
+package com.atmecs.tutorialsninja.testscripts;
+
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
+
+import com.atmecs.tutorialsninja.testbase.TestSuiteBase;
+
+public class TutorialsNinjaHomePage extends TestSuiteBase {
+	@BeforeTest
+	public void open_url() {
+		
+		utils.geturl(driver, "");
+		utils.maximize(driver);
+	}
+	
+public void 
+}
+

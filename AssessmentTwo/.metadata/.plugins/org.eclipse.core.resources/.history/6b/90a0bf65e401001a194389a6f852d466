@@ -1,0 +1,53 @@
+package com.atmecs.tutorialsninja.helper;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.util.List;
+import java.util.Scanner;
+
+import com.atmecs.tutorialsninja.testbase.Classpaths;
+import com.atmecs.tutorialsninja.reports.Log4j;
+
+public class CsvReader {
+	public Log4j log = new Log4j();
+	List<Integer> list;
+	String value;
+	int getfieldone;
+	String getfieldtwo, getfieldthree;
+	/*
+	 * Method to read csv data files and prints with matching single column
+	 * 
+	 * 
+	 * @author   Magesh
+	 */
+	public String reader(String filepath, String columnname, int idvalue) {
+		String dummy = null;
+		FileInputStream fis = null;
+		try {
+			fis = new FileInputStream(filepath);
+		} catch (FileNotFoundException fileexception) {
+			log.info(fileexception + " arised during loading of the file");
+		}
+
+		@SuppressWarnings("resource")
+		Scanner s = new Scanner(fis);
+		while (s.hasNextLine()) {
+			String ar = s.nextLine().replaceAll("//s+", "");
+			String[] csvarr = ar.split(",");
+			if (csvarr[0].equals(idvalue + "")) {
+				dummy = csvarr[1];
+				break;
+			}
+		}
+		return dummy;
+	}
+
+	/*
+	 * public static void main(String[] args) throws FileNotFoundException {
+	 * CsvReader read = new CsvReader(); read.reader(
+	 * "D:\\training\\eclipse-workspace\\Project\\src\\main\\resources\\com\\atmecs\\application\\datavalues\\datavalues.csv",
+	 * "name", 1);
+	 * 
+	 * }
+	 */
+}

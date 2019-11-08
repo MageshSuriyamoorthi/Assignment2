@@ -1,0 +1,30 @@
+package com.atmecs.tutorialsninja.testscripts;
+
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+import com.atmecs.tutorialsninja.testbase.TestSuiteBase;
+import com.atmecs.tutorialsninja.utils.AssertionAndValidationManager;
+
+public class TutorialsNinjaHomePage extends TestSuiteBase {
+	private AssertionAndValidationManager assertandvalidate=new AssertionAndValidationManager();
+	
+	
+	String get_title;
+	
+	@BeforeTest
+	public void open_Url() {
+
+		utils.geturl(driver, propertyreader.getLocatorValue("config.url_one"));
+		utils.maximize(driver);
+	}
+
+	@Test
+	public void validate_HomePage() {
+
+		get_title=utils.gettitle(driver);
+		assertandvalidate.
+		
+		
+	}
+}

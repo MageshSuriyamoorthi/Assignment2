@@ -1,0 +1,49 @@
+package com.atmecs.tutorialsninja.scriptbase;
+
+import org.apache.log4j.Logger;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+
+import com.atmecs.tutorialsninja.helper.PropertiesFileReader;
+import com.atmecs.tutorialsninja.utils.AssertionAndValidationManager;
+import com.atmecs.tutorialsninja.utils.UtilityFiles;
+import com.atmecs.tutorialsninja.utils.WaitsandSimpleAlert;
+
+public class TutorialsNinjaHomePageBase {
+	String getactual_title, getexpected_title;
+	String actual, expected;
+
+	public Logger log = Logger.getLogger("Testbase files");
+	private PropertiesFileReader propertyreader = new PropertiesFileReader();
+	public WaitsandSimpleAlert wait = new WaitsandSimpleAlert();
+	public UtilityFiles utils = new UtilityFiles();
+	private AssertionAndValidationManager assertandvalidate = new AssertionAndValidationManager();
+
+	public void search_product(WebDriver driver, String sendkeys) {
+		utils.sendkeys(driver, propertyreader.getLocatorValue("loc.search.textbox"), sendkeys);
+
+		utils.click(driver, propertyreader.getLocatorValue("loc.search.button"));
+
+	}
+
+	
+	public void product_validation(WebDriver driver, String columnname) {
+
+		actual = utils.getActual(driver, "loc.product.availability");
+		expected = assertandvalidate.getdataval("HomePageData", columnname, 4);
+		assertandvalidate.assertequals(actual, expected);
+		
+		actual = utils.getActual(driver, "loc.product.price");
+		expected = assertandvalidate.getdataval("HomePageData", columnname, 5);
+		assertandvalidate.assertequals(actual, expected);
+		
+		actual = utils.getActual(driver, "loc.product.extax");
+		expected = assertandvalidate.getdataval("HomePageData", columnname, 6);
+		assertandvalidate.assertequals(actual, expected);
+		
+		actual = utils.getActual(driver, "loc.product.description");
+		expected = assertandvalidate.getdataval("HomePageData", columnname, 7);
+		assertandvalidate.assertequals(actual, expected);
+		
+	}
+}

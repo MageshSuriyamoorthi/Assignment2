@@ -1,0 +1,5 @@
+loc.search.textbox=classname:form-control input-lg
+
+loc.search.button=classname:btn btn-default btn-lg
+
+loc.image.click=classname:img-responsive

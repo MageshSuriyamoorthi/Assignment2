@@ -1,0 +1,46 @@
+package com.atmecs.tutorialsninja.testscripts;
+
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+import com.atmecs.tutorialsninja.testbase.TestSuiteBase;
+import com.atmecs.tutorialsninja.utils.AssertionAndValidationManager;
+
+public class TutorialsNinjaHomePage extends TestSuiteBase {
+	private AssertionAndValidationManager assertandvalidate = new AssertionAndValidationManager();
+
+	String getactual_title, getexpected_title;
+
+	@BeforeTest
+	public void open_Url() {
+
+		utils.geturl(driver, propertyreader.getLocatorValue("config.url_one"));
+		utils.maximize(driver);
+	}
+
+	@BeforeMethod
+	public void validate_HomePage() {
+		getactual_title = utils.gettitle(driver);
+
+		getexpected_title = assertandvalidate.getdataval("HomePageData", "HomepageTitle", 1);
+
+		assertandvalidate.assertequals(getactual_title, getexpected_title);
+	}
+
+	@Test
+	public void search_product() {
+		utils.sendkeys(driver, propertyreader.getLocatorValue("loc.search.textbox"), "iphone");
+
+		utils.click(driver, propertyreader.getLocatorValue("loc.search.button"));
+
+		utils.click(driver, propertyreader.getLocatorValue("loc.image.click"));
+
+		getactual_title = utils.gettitle(driver);
+		getexpected_title = assertandvalidate.getdataval("HomePageData", "HomepageTitle",2);
+		assertandvalidate.assertequals(getactual_title, getexpected_title);
+		
+		
+
+	}
+}

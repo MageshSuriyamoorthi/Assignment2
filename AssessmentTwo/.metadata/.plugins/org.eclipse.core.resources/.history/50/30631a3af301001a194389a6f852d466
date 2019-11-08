@@ -1,0 +1,27 @@
+package com.atmecs.tutorialsninja.scriptbase;
+
+import org.apache.log4j.Logger;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+
+import com.atmecs.tutorialsninja.helper.PropertiesFileReader;
+import com.atmecs.tutorialsninja.utils.AssertionAndValidationManager;
+import com.atmecs.tutorialsninja.utils.UtilityFiles;
+import com.atmecs.tutorialsninja.utils.WaitsandSimpleAlert;
+
+public class TutorialsNinjaHomePageBase {
+	String getactual_title, getexpected_title;
+
+	public Logger log = Logger.getLogger("Testbase files");
+	public PropertiesFileReader propertyreader = new PropertiesFileReader();
+	public WaitsandSimpleAlert wait = new WaitsandSimpleAlert();
+	public UtilityFiles utils = new UtilityFiles();
+	private AssertionAndValidationManager assertandvalidate = new AssertionAndValidationManager();
+
+	public void add_to_cart(WebDriver driver,String locator,String sendkeys) {
+		
+		utils.click(driver,locator);
+		utils.sendkey(driver, locator, Keys.BACK_SPACE);
+		utils.sendkeys(driver, locator, sendkeys);
+	}
+}

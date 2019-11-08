@@ -1,0 +1,55 @@
+package com.atmecs.tutorialsninja.scriptbase;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.log4j.Logger;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import com.atmecs.tutorialsninja.helper.PropertiesFileReader;
+import com.atmecs.tutorialsninja.utils.AssertionAndValidationManager;
+import com.atmecs.tutorialsninja.utils.UtilityFiles;
+import com.atmecs.tutorialsninja.utils.WaitsandSimpleAlert;
+
+public class TutorialsNinjaHomePageBase {
+	String getactual_title, getexpected_title;
+	List<WebElement> list;
+	List<String> listnames;
+
+	public Logger log = Logger.getLogger("Testbase files");
+	private PropertiesFileReader propertyreader = new PropertiesFileReader();
+	public WaitsandSimpleAlert wait = new WaitsandSimpleAlert();
+	public UtilityFiles utils = new UtilityFiles();
+	private AssertionAndValidationManager assertandvalidate = new AssertionAndValidationManager();
+
+	public void search_product(WebDriver driver, String sendkeys) {
+		utils.sendkeys(driver, propertyreader.getLocatorValue("loc.search.textbox"), sendkeys);
+
+		utils.click(driver, propertyreader.getLocatorValue("loc.search.button"));
+
+	}
+
+	public void add_to_cart(WebDriver driver, String sendkeys) {
+
+		utils.click(driver, propertyreader.getLocatorValue("loc.addtocart.textbox"));
+		utils.sendkey(driver, propertyreader.getLocatorValue("loc.addtocart.textbox"), Keys.BACK_SPACE);
+		utils.sendkeys(driver, propertyreader.getLocatorValue("loc.addtocart.button"), sendkeys);
+	}
+
+	public void product_validation(WebDriver driver, String columnname) {
+		/*
+		 * list = utils.findelements(driver,
+		 * propertyreader.getLocatorValue("loc.product.common"));
+		 * 
+		 * for (int textval = 0; textval <= list.size(); textval++) { String newList =
+		 * assertandvalidate.getdataval("HomePageData", columnname, textval); listnames
+		 * = new ArrayList<String>(); listnames.add(newList); } String availability =
+		 * utils.getActual(driver, "loc.product.availability");
+		 * assertandvalidate.listassertequals(availability, listnames,"assert equals");
+		 */
+		
+		
+	}
+}

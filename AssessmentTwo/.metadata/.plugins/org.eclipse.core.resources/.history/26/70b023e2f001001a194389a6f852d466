@@ -1,0 +1,11 @@
+package com.atmecs.tutorialsninja.scriptbase;
+
+public class TutorialsNinjaHomePageBase {
+
+	public void pagetitle_validation() {
+		getactual_title = utils.gettitle(driver);
+
+		getexpected_title = assertandvalidate.getdataval("HomePageData", "HomepageTitle", 1);
+
+	}
+}

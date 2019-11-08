@@ -1,0 +1,11 @@
+package com.atmecs.tutorialsninja.testscripts;
+
+import com.atmecs.tutorialsninja.testbase.TestSuiteBase;
+
+public class TutorialsNinjaHomePage extends TestSuiteBase {
+
+	public void open_url() {
+		
+	}
+	
+}
